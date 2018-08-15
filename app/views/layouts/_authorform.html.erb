@@ -86,7 +86,11 @@ if @user.genre3 ; @genrethree = "," + @user.genre3.gsub(/ +/, '-') else @genreth
             <% end %>
             <li><%= link_to @user.following.count.to_s + " following", user_followingpage_path(@user.permalink), class: 'link-to-text' %> </li>
             <li><%= link_to @user.followers.count.to_s + " followers", user_followerspage_path(@user.permalink), class: 'link-to-text' %> </li>
-            <li><%= render '/users/follow_form', :user => User.find_by_permalink(params[:permalink]) %> </li>
+            <% if user_signed_in? %>
+              <% if current_user.id != @user.id %>
+                <li><%= render '/users/follow_form', :user => User.find_by_permalink(params[:permalink]) %> </li>
+              <% end %>
+            <% end %>
           
             <% if @user.about.present? || @user.twitter.present? %>
               <li><%= link_to " About Me ", user_about_path(@user.permalink), class: 'link-to-text'  %> </li>
