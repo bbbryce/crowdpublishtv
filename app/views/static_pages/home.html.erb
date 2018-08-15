@@ -8,31 +8,30 @@
 </head>
 
 <div class="container-flex">
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="10000" style="margin-top:30px; height:400px;">
-  <!-- Indicators --0
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner"> 
-    <div class="item active" style="height:400px;">
-      <img src="http://www.CrowdPublish.TV/bookDude.png" alt="Hangouts">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="10000" style="margin-top:30px; height:400px;">
+    <!-- Indicators --0
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner"> 
+      <div class="item active" style="height:400px;">
+        <img src="http://www.CrowdPublish.TV/bookDude.png" alt="Hangouts">
+      </div>
     </div>
-  </div>
 
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 </div>
 
 
@@ -51,103 +50,105 @@
       </div>
   </div>
 </div>
-  <div class="row fixed-header" >
-    <div class="navbar-inner " >
-      <ul class="nav navbar-nav pull-left" style="padding-left:20px; font-size:16px;">
-        <li><%= link_to "What is CrowdPublishTV", '/aboutus' %>
-        <li><%= link_to "SUPPORT A CAMPAIGN", phases_path %>
-        <% if user_signed_in? %>
-          <li><%= link_to 'START NEW CAMPAIGN', new_phase_path %>
-        <% else %>
-          <li><%= link_to 'START MY CAMPAIGN', "/signup" %>
-        <% end %>
-        <li><%= link_to "FAQ", '/faq' %>
-        <li><%= link_to "Take the survey", 'https://docs.google.com/forms/d/1brvWNjjac4k1AZXHCOIs5KOJJnE6fxM4jJpZcoM0wrI' %>
-        <% if user_signed_in? %>
-          <li><%= link_to current_user.name, user_profile_path(current_user.permalink) %>
-          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
-        <% else %>
-          <li><%= link_to 'Sign in', "/login" %>
-        <% end %>
-      </ul>
-    </div> 
-  </div>
 
-  <div class="row">
-    <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top:20px; padding-right:30px;">
-      <div class = "helps" style = "color:#1F0D5F; font-size:35px;" >
-        WRITERS, ACTORS  
-      </div>
-      <div class = "helps" style = "font-size:30px; margin-top:10px">
-        Earn financial support from fans
-      </div><br>
-      <div class = "helps" style = "text-align:left; font-size:20px;" >
-        <% if user_signed_in? %>
-          <% if @user.profilepic.present? %>
-            <span class="dot"></span> <%= link_to "Improve your profile", user_profileinfo_path(current_user.permalink), title: "Embed your YouTube videos, update your banner, give your fans more details about your work" %>
-          <% else %>
-            <span class="dot"></span> <%= link_to "Create profile", user_profileinfo_path(current_user.permalink), style:"color:red;", title: "Tell your fans about yourself... Add a picture of yourself, a banner about your books or videos" %> 
-          <% end %><br>
+<div class="row" >
+  <div class="navbar-inner " >
+    <ul class="nav navbar-nav  fixed-header" style="padding-left:20px; font-size:16px;">
+      <li id="crowdPublishIcon-logo" style="float:left"> <%=  image_tag("crowdPublishIcon.png", width: "35") %> </li>
+      <li style="float:left"><%= link_to " CrowdPublishTV", '/home' %> </li>
+      <li><%= link_to "About", '/aboutus' %>
+      <li><%= link_to "SUPPORT A CAMPAIGN", phases_path %>
+      <% if user_signed_in? %>
+        <li><%= link_to 'START NEW CAMPAIGN', new_phase_path %>
+      <% end %>
+      <li><%= link_to "FAQ", '/faq' %>
+      <li><%= link_to "Take the survey", 'https://docs.google.com/forms/d/1brvWNjjac4k1AZXHCOIs5KOJJnE6fxM4jJpZcoM0wrI' %>
+      <% if user_signed_in? %>
+        <li><%= link_to current_user.name, user_profile_path(current_user.permalink) %>
+        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
+      <% else %>
+        <li style="float:right" ><%= link_to 'Sign up', "/signup"%>
+        <li style="float:right" ><%= link_to 'Sign in', "/login" %>
+      <% end %>
+    </ul>
+  </div> 
+</div>
 
-          <% if @user.phases.any? %>
-            <span class="dot" style = "margin-top:10px"></span> <%= link_to "Start another CrowdPublish campaign", new_phase_path(current_user.permalink), title: "A great excuse to reach out to your most loyal fans" %> 
-          <% else %>
-            <span class="dot" style = "margin-top:10px"></span> <%= link_to "Start campaign about characters we can Respect", new_phase_path(current_user.permalink), style:"color:red;", title: "Your most loyal fans are eager to support your next story" %> 
-          <% end %><br>
-
-          <% if @user.phases.any? %>
-            <% if @recentphase.merchandises.any? %>
-              <span class="dot" style = "margin-top:10px"></span> <%= link_to "Enter more Perks to offer fans", @perkpath, title: "Create new perks that only you can offer your most loyal fans!" %> 
-            <% else %>
-              <span class="dot" style = "margin-top:10px"></span> <%= link_to "Enter unique Perks to offer fans", @perkpath, style:"color:red;", title: "Offer perks that only you could give to your most loyal fans!" %> 
-            <% end %>
-          <% else %>
-              <span class="dot"></span> Select & Create Perks to offer Fans
-          <% end %><br>
-
-          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Tell all your friends & fans", '/tellfriends', style:"color:red;", title: "Announce your CrowdPublish Campaign on twitter, facebook, email, from rooftops..." %> <br>
-
-          <% if @user.stripeid.present? %>
-            <span class="dot" style = "margin-top:10px"></span> <%= link_to "Manage Your $", user_dashboard_path(@user.permalink), title: "View your dashboard" %>
-          <% else %>
-            <span class="dot" style = "margin-top:10px"></span> <%= link_to "Receive $", user_createstripeaccount_path(@user.permalink), style:"color:red;", title: "Get your money deposited directly into your bank account. CrowdPublish.TV uses the same trusted payment processor many of your favorite sites use." %>
-          <% end %>
-        <br>
-
-        <% else %>
-          <span class="dot"></span> <%= link_to "Create profile", '/signup', title: "Signup to get a free CrowdPublishTV web site." %> <br>
-          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Create campaign for story", '/signup', title: "Signup to create a Campaign" %> <br>
-          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Create Perks to offer fans", '/suggestedperks', title: "Offer your fans more than just your videos or books. We have a list of standard perks you can add to your Campaign" %> <br>
-          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Tell all your friends & fans", '/tellfriends', title: "The process of getting the word out about your CrowdPublish Campaign" %> <br>
-          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Receive $", '/signup', title: "We use the same trusted payment processor many of your favorite sites use", :target => "_blank" %>
-        <% end %>
-      </div>
+<div class="row">
+  <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top:20px; padding-right:30px;">
+    <div class = "helps" style = "color:#1F0D5F; font-size:35px;" >
+      WRITERS, ACTORS  
     </div>
-
-    <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top:20px">
-      <div class = "helps" style = "color:#1F0D5F; font-size:35px;" >
-        FANS
-      </div>  
-      <div class = "helps" style = "font-size:30px; margin-top:10px">
-        Receive more than just books & movies
-      </div><br>
-      <div class = "helps" style = "text-align:left; font-size:20px;" >
-        <% if user_signed_in? %>
-          <% if @user.bannerpic.present? %>
-            <span class="dot" style = "margin-top:10px"></span> <%= link_to "Improve your profile", user_profileinfo_path(current_user.permalink), title: "Embed your YouTube videos, update your banner, give your fans more details about your work" %>
-          <% else %>
-            <span class="dot" style = "margin-top:10px"></span> <%= link_to "Create profile", user_profileinfo_path(current_user.permalink), style:"color:red;", title: "Tell your fans about yourself... Add a picture of yourself, a banner about your books or videos" %> 
-          <% end %>
+    <div class = "helps" style = "font-size:30px; margin-top:10px">
+      Earn financial support from fans
+    </div><br>
+    <div class = "helps" style = "text-align:left; font-size:20px;" >
+      <% if user_signed_in? %>
+        <% if @user.profilepic.present? %>
+          <span class="dot"></span> <%= link_to "Improve your profile", user_profileinfo_path(current_user.permalink), title: "Embed your YouTube videos, update your banner, give your fans more details about your work" %>
         <% else %>
-          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Create profile", '/signup' %>
+          <span class="dot"></span> <%= link_to "Create profile", user_profileinfo_path(current_user.permalink), style:"color:red;", title: "Tell your fans about yourself... Add a picture of yourself, a banner about your books or videos" %> 
         <% end %><br>
 
-          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Find a story worth supporting", phases_path, style:"color:red;", title: "Become a loyal fans of Characters we can Respect" %> <br>
-          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Purchase Perks from fantastic storytellers", phases_path, title: "Purchase unique perks offered to loyal fans through storyteller campaigns" %> <br>
-          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Tell all your friends", '/tellfriends', style:"color:red;", title: "Spread the word about campaigns for Characters we can Respect on twitter, facebook, email, from rooftops..." %> 
-      </div>
+        <% if @user.phases.any? %>
+          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Start another CrowdPublish campaign", new_phase_path(current_user.permalink), title: "A great excuse to reach out to your most loyal fans" %> 
+        <% else %>
+          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Start campaign about characters we can Respect", new_phase_path(current_user.permalink), style:"color:red;", title: "Your most loyal fans are eager to support your next story" %> 
+        <% end %><br>
+
+        <% if @user.phases.any? %>
+          <% if @recentphase.merchandises.any? %>
+            <span class="dot" style = "margin-top:10px"></span> <%= link_to "Enter more Perks to offer fans", @perkpath, title: "Create new perks that only you can offer your most loyal fans!" %> 
+          <% else %>
+            <span class="dot" style = "margin-top:10px"></span> <%= link_to "Enter unique Perks to offer fans", @perkpath, style:"color:red;", title: "Offer perks that only you could give to your most loyal fans!" %> 
+          <% end %>
+        <% else %>
+            <span class="dot"></span> Select & Create Perks to offer Fans
+        <% end %><br>
+
+        <span class="dot" style = "margin-top:10px"></span> <%= link_to "Tell all your friends & fans", '/tellfriends', style:"color:red;", title: "Announce your CrowdPublish Campaign on twitter, facebook, email, from rooftops..." %> <br>
+
+        <% if @user.stripeid.present? %>
+          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Manage Your $", user_dashboard_path(@user.permalink), title: "View your dashboard" %>
+        <% else %>
+          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Receive $", user_createstripeaccount_path(@user.permalink), style:"color:red;", title: "Get your money deposited directly into your bank account. CrowdPublish.TV uses the same trusted payment processor many of your favorite sites use." %>
+        <% end %>
+      <br>
+
+      <% else %>
+        <span class="dot"></span> <%= link_to "Create profile", '/signup', title: "Signup to get a free CrowdPublishTV web site." %> <br>
+        <span class="dot" style = "margin-top:10px"></span> <%= link_to "Create campaign for story", '/signup', title: "Signup to create a Campaign" %> <br>
+        <span class="dot" style = "margin-top:10px"></span> <%= link_to "Create Perks to offer fans", '/suggestedperks', title: "Offer your fans more than just your videos or books. We have a list of standard perks you can add to your Campaign" %> <br>
+        <span class="dot" style = "margin-top:10px"></span> <%= link_to "Tell all your friends & fans", '/tellfriends', title: "The process of getting the word out about your CrowdPublish Campaign" %> <br>
+        <span class="dot" style = "margin-top:10px"></span> <%= link_to "Receive $", '/signup', title: "We use the same trusted payment processor many of your favorite sites use", :target => "_blank" %>
+      <% end %>
     </div>
   </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top:20px">
+    <div class = "helps" style = "color:#1F0D5F; font-size:35px;" >
+      FANS
+    </div>  
+    <div class = "helps" style = "font-size:30px; margin-top:10px">
+      Receive more than just books & movies
+    </div><br>
+    <div class = "helps" style = "text-align:left; font-size:20px;" >
+      <% if user_signed_in? %>
+        <% if @user.bannerpic.present? %>
+          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Improve your profile", user_profileinfo_path(current_user.permalink), title: "Embed your YouTube videos, update your banner, give your fans more details about your work" %>
+        <% else %>
+          <span class="dot" style = "margin-top:10px"></span> <%= link_to "Create profile", user_profileinfo_path(current_user.permalink), style:"color:red;", title: "Tell your fans about yourself... Add a picture of yourself, a banner about your books or videos" %> 
+        <% end %>
+      <% else %>
+        <span class="dot" style = "margin-top:10px"></span> <%= link_to "Create profile", '/signup' %>
+      <% end %><br>
+
+        <span class="dot" style = "margin-top:10px"></span> <%= link_to "Find a story worth supporting", phases_path, style:"color:red;", title: "Become a loyal fans of Characters we can Respect" %> <br>
+        <span class="dot" style = "margin-top:10px"></span> <%= link_to "Purchase Perks from fantastic storytellers", phases_path, title: "Purchase unique perks offered to loyal fans through storyteller campaigns" %> <br>
+        <span class="dot" style = "margin-top:10px"></span> <%= link_to "Tell all your friends", '/tellfriends', style:"color:red;", title: "Spread the word about campaigns for Characters we can Respect on twitter, facebook, email, from rooftops..." %> 
+    </div>
+  </div>
+</div>
 <br>
 
 <div class="row" > 
@@ -165,15 +166,4 @@
     <b>Browse more CrowdPublish.TV campaigns</b><br> <%= will_paginate @campaigns %> <br>
   </div><br><br>
 
-  <div class="row" style="margin-top:15px;" >
-    <div class="col-md-5" >
-      <div class = "copyalpha" >
-        Questions? Contact info@CrowdPublish.TV 
-        <br><br>(C) Copyright 2018, RoleModel Enterprises, LLC. All Rights Reserved.
-      </div>
-    </div>
-  </div>
-
-
 </div>
-  <br><br>

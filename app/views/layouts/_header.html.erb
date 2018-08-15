@@ -1,9 +1,9 @@
 <header class="navbar ">
   <div class="container-flex">
 
-  <div class="row">
-    <div class="navbar-inner fixed-header" style="padding-left:20px;">
-      <ul class="nav navbar-nav pull-left"style="font-size:18px; font-family:Arial" >
+  <div class="row" style="width: 100%">
+    <div class="navbar-inner " >
+      <ul class="nav navbar-nav fixed-header" style="padding-left:20px; font-size:16px;" >
         <li><%= link_to "Home", "/" %>
         <li><%= link_to "SUPPORT A CAMPAIGN", phases_path %>
         <% if user_signed_in? %>

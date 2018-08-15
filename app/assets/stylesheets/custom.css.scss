@@ -9,6 +9,7 @@ $grayMediumLight: #eaeaea;
 
 html {
   width: 100%;
+  height: 100%;
   overflow-y: scroll;
 }
 
@@ -238,28 +239,16 @@ header.navbar {
 /* footer */
 
 footer {
-  margin-top: 25px;
-  padding-top: 5px;
-  margin-right: 10px;
-  border-top: 1px solid #000;
-  color: black;
-  a {
-    color: #000;
-    &:hover {
-      //color: $grayDarker;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 10px;
-    }
-  }
+  background-color: white;
+  padding: 15px;
+  margin: 0px;
+  height: 125px;
+  width: 100%;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
 }
 #error_explanation {
   color: #f00;
@@ -422,4 +411,9 @@ center .info-content {
 .button:hover {
   background-color: #863276;
 } 
+
+.content {
+  min-height: calc(100vh - 70px);
+  padding: 40px 40px 0 40px;
+}
 
